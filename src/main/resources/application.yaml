@@ -2,3 +2,9 @@ logging:
   level:
     org.springframework: INFO
     com.droneserver.demo: DEBUG
+
+app: 
+  drone:
+    video-ws-wndpoint: /videofeed
+    video-server-port: 1313
+    drone-id-length: 1

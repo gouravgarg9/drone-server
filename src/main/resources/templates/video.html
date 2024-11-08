@@ -1,0 +1,28 @@
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="/js/library.js"></script>
+
+        <title>Drone Camera</title>
+
+        <script th:inline="javascript">
+            const HOST_NAME = [[${piblicIp}]]
+            const DRONE_ID = [[${droneId}]]
+            const VIDEO_ENDPOINT = [[${videoEndpoint}]]
+
+            const videoStreamClient = new videoStreamClient(DRONE_ID, HOST_NAME, 80, VIDEO_ENDPOINT)
+
+            $(document).ready( function(){
+                $(img).attr("id", DRONE_ID)
+                videoStreamClient.activateStream()
+            })
+        </script>
+    </head>
+    <body>
+        <h1>Drone Control (Hi VENOMOUS!)</h1>
+        <img style="width: 100%" />
+    </body>
+</html>
