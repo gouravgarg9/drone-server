@@ -3,10 +3,30 @@
         <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
         <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        
+        <script type="text/javascript" src="/js/library.js"></script>
 
+        <script th:inline="javascript">  
+            const PUBLIC_IP	       = [[${publicIp}]]
+            const VIDEO_ENDPOINT   = [[${videoEndpoint}]]
+            const DEFAULT_SPEED    = [[${defaultSpeed}]]
+            const DEFAULT_ALTITUDE = [[${defaultAltitude}]]
+            const GOOGLE_API_KEY = [[${googleApiKey}]]
+            const script = document.createElement("script");
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}`;
+            script.type = "text/javascript";
+            document.head.appendChild(script);
+          </script>
+        
         <title>Drone Control</title>
     </head>
-    <body>
-        <h1>Drone Control (Hi VENOMOUS!)</h1>
-    </body>
+<body>  
+
+  <hr>
+	<div id="container" style="margin-left: 7px;">
+		<div id="map"></div>
+		<div class="dronesList"></div>
+	</div>
+
+</body>
 </html>

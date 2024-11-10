@@ -20,10 +20,19 @@ public class ConfigReader {
     @Value("${app.drone.drone-id-length}")
     private int droneIdLength;
 
-    @Value("${app.drone.drone-server-ip}")
+    @Value("${app.drone-server-ip}")
     private String droneServerIp;
+
+    @Value("${app.google-api-key}")
+    private String googleApiKey;
 
     @Value("${server.port}")
     private int port;
+
+    @Value("${app.drone.default-speed}")
+	private int defaultSpeed;
+
+    @Value("${app.drone.default-altitude}")
+	private int defaultAltitude;
 
 }

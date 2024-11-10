@@ -22,8 +22,14 @@ public class BaseController {
     private final ConfigReader configurations;
 
     @GetMapping("/")
-    public String indexPage() {
-        log.debug("Index Page Opened");
+    public String indexPage(Model model) {
+		
+		model.addAttribute("publicIp", getPublicIpAddress());
+		model.addAttribute("defaultSpeed", configurations.getDefaultSpeed());
+		model.addAttribute("defaultAltitude", configurations.getDefaultAltitude());
+		model.addAttribute("videoEndpoint", configurations.getVideoWsEndpoint());
+        model.addAttribute("googleApiKey", configurations.getGoogleApiKey());
+        
         return "index";
     }
 
