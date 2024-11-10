@@ -44,7 +44,7 @@ class Drone {
         this.id = id;
         this.lat = lat;
         this.lng = lng;
-        this.videoSocket = new VideoStreamClient(id, PUBLIC_IP, 80, VIDEO_ENDPOINT);
+        this.videoSocket = new VideoStreamClient(id, PUBLIC_IP, PORT, VIDEO_ENDPOINT);
         this.posMark = new google.maps.Marker({
             position: { lat: lat, lng: lng },
             map: WORLD_MAP, 

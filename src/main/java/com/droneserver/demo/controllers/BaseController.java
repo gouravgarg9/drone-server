@@ -29,6 +29,7 @@ public class BaseController {
 		model.addAttribute("defaultAltitude", configurations.getDefaultAltitude());
 		model.addAttribute("videoEndpoint", configurations.getVideoWsEndpoint());
         model.addAttribute("googleApiKey", configurations.getGoogleApiKey());
+        model.addAttribute("hostPort", configurations.getPort());
         
         return "index";
     }

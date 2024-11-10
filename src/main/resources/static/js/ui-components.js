@@ -11,10 +11,7 @@ const renderMapPointDataComponent = function (pointId, alt, speed) {
 
 
 const renderDroneUIComponent = function (droneDTO) {
-    const slash='/';
-    const quote='"';
-    const videoFeedURL = `'http://${PUBLIC_IP}/video/${droneDTO.id}/'`;
-    console.log(videoFeedURL);
+    const videoFeedURL = `'http://${PUBLIC_IP}:${PORT}/video/${droneDTO.id}'`;
     return '<div id="ctrlPanel1'+droneDTO.id+'" droneId="'+droneDTO.id+'" class="dronesList-header">Drone: '+droneDTO.id +
 
         ' -> <label>Altitude (m): </label> <input type="text" id="infoAlt'+droneDTO.id+'" size="2" value="'+droneDTO.alt+'" disabled />' +
@@ -26,7 +23,7 @@ const renderDroneUIComponent = function (droneDTO) {
 
         '<div class="dronesList-content" style="position:relative;">' +
 
-        '<img id="video'+droneDTO.id+'"  src="video.jpg"  style="width: 100%; border-radius: 15px;" ' +
+        '<img id="'+droneDTO.id+'"  src="video.jpg"  style="width: 100%; border-radius: 15px;" ' +
              'onclick="DRONES_MAP.get(\''+droneDTO.id+'\').startVideoFeed(); activateViewFPV(\''+droneDTO.id+'\');"> <br/>' +
 
         '<div id="ctrlPanel2'+droneDTO.id+'" style="position: absolute; top: 56%; float: left;">' +

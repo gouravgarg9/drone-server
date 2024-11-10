@@ -7,9 +7,10 @@
         <script type="text/javascript" src="/js/library.js"></script>
 
         <script th:inline="javascript">  
-            const PUBLIC_IP	       = [[${publicIp}]]
-            const VIDEO_ENDPOINT   = [[${videoEndpoint}]]
-            const DEFAULT_SPEED    = [[${defaultSpeed}]]
+            const PUBLIC_IP = [[${publicIp}]]
+            const PORT = [[${hostPort}]]
+            const VIDEO_ENDPOINT = [[${videoEndpoint}]]
+            const DEFAULT_SPEED = [[${defaultSpeed}]]
             const DEFAULT_ALTITUDE = [[${defaultAltitude}]]
             const GOOGLE_API_KEY = [[${googleApiKey}]]
             const script = document.createElement("script");
