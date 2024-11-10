@@ -4,13 +4,10 @@
     <!-- Define log file path and file name pattern -->
     <property name="LOG_PATH" value="logs"/>
     <property name="LOG_FILE" value="${LOG_PATH}/application.log"/>
+    <springProperty scope="context" name="appender_name"  source="app.logging-to"/>
 
-    <property name="appender_name" value="FILE"/>
     <!-- <springProperty scope="context" name="appender_name" source="app.logging-to"> -->
-
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
-
- 
     
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

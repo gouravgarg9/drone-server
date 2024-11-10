@@ -11,13 +11,19 @@ import lombok.Setter;
 @Component
 public class ConfigReader {
 
-    // @Value("${app.drone.video-ws-endpoint}")
-    private String videoWsEndpoint = "/videofeed";
+    @Value("${app.drone.video-ws-endpoint}")
+    private String videoWsEndpoint;
 
-    // @Value("${app.drone.video-server-port}")
-    private int videoServerPort = 1313;
+    @Value("${app.drone.video-server-port}")
+    private int videoServerPort;
 
-    // @Value("${app.drone.drone-id-length}")
-    private int droneIdLength = 1;
+    @Value("${app.drone.drone-id-length}")
+    private int droneIdLength;
+
+    @Value("${app.drone.drone-server-ip}")
+    private String droneServerIp;
+
+    @Value("${server.port}")
+    private int port;
 
 }

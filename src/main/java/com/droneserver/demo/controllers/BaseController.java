@@ -31,23 +31,14 @@ public class BaseController {
     public String getVideoFeed(Model model, @PathVariable("droneId") String droneId) {
         model.addAttribute("publicIp", getPublicIpAddress());
         model.addAttribute("droneId", droneId);
+        model.addAttribute("hostPort", configurations.getPort());
         model.addAttribute("videoEndpoint", configurations.getVideoWsEndpoint());
 
         return "video";
     }
 
     private String getPublicIpAddress() {
-        String ip = "";
-        // String ip = InetAddress.getLocalHost().getHostAddress();
-
-        try {
-            final URL whatismyip = new URL("https://checkip.amazonaws.com");
-            try (final BufferedReader in = new BufferedReader(new InputStreamReader(whatismyip.openStream()))) {
-                ip = in.readLine();
-            }
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }
+        String ip = configurations.getDroneServerIp();
         return ip;
     }
 }
