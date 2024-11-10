@@ -9,6 +9,10 @@ const renderMapPointDataComponent = function (pointId, alt, speed) {
         '</form>'
 }
 
+const renderOneVideoStream = function (droneId) {
+    return '<img class="'+droneId+'" src="video.jpg" style="width: 45%; border-radius: 15px;" ' +
+    'onclick="activateViewFPV(\''+droneId+'\');deactivateViewAll();">'
+}
 
 const renderDroneUIComponent = function (droneDTO) {
     const videoFeedURL = `'http://${PUBLIC_IP}:${PORT}/video/${droneDTO.id}'`;
@@ -23,7 +27,7 @@ const renderDroneUIComponent = function (droneDTO) {
 
         '<div class="dronesList-content" style="position:relative;">' +
 
-        '<img id="'+droneDTO.id+'"  src="video.jpg"  style="width: 100%; border-radius: 15px;" ' +
+        '<img class="'+droneDTO.id+'"  src="video.jpg"  style="width: 100%; border-radius: 15px;" ' +
              'onclick="DRONES_MAP.get(\''+droneDTO.id+'\').startVideoFeed(); activateViewFPV(\''+droneDTO.id+'\');"> <br/>' +
 
         '<div id="ctrlPanel2'+droneDTO.id+'" style="position: absolute; top: 56%; float: left;">' +
@@ -121,4 +125,10 @@ const activateViewMAP = function (id) {
     $('#ctrlPanel3'+id).css({"position": "relative", "margin":"15px", "box-sizing": "border-box"});
     $('#ctrlPanel8'+id).css({"float": "right", "position": "relative", "margin":"15px", "box-sizing": "border-box"});
 	$('#ctrlPanel4'+id).css({"position": "relative", "margin":"15px", "box-sizing": "border-box"});
+}
+
+const showAllVideosPanel = function () {
+    $('#container').hide();
+    $('#all-video-container').show();
+    $('#all-video-container').css({"display": "flex", "flex-direction": "row", "flex-flow": "row wrap", "align-items": "center", "justify-content": "space-between", "padding": "20px"})
 }

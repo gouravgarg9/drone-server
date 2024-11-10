@@ -17,7 +17,7 @@
             const videoStreamClient = new VideoStreamClient(DRONE_ID, HOST_NAME, PORT, VIDEO_ENDPOINT)
 
             $(document).ready( function(){
-                $('img').attr("id", DRONE_ID)
+                $('img').attr("class", DRONE_ID)
                 videoStreamClient.activateStream()
             })
         </script>

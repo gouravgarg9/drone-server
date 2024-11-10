@@ -18,7 +18,7 @@ class VideoStreamClient {
         }
 
         this.webSocket.onmessage = function (event) {
-            $('#' + activeDroneId).attr("src", "data:image/jpg;base64," + event.data);
+            $('.' + activeDroneId).attr("src", "data:image/jpg;base64," + event.data);
         }
     }
 

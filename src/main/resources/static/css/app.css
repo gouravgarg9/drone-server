@@ -4,9 +4,15 @@
 }
 
 .topnav {
+  font-size: larger;
   overflow: hidden;
+  padding-left: 5%;
+  padding-right: 5%;
   background-color: #333;
+  display: flex;
+  justify-content: space-between;
 }
+
 
 #drone-head {
   margin: auto;
