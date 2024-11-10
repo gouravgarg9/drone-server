@@ -11,6 +11,10 @@ const renderMapPointDataComponent = function (pointId, alt, speed) {
 
 
 const renderDroneUIComponent = function (droneDTO) {
+    const slash='/';
+    const quote='"';
+    const videoFeedURL = `'http://${PUBLIC_IP}/video/${droneDTO.id}/'`;
+    console.log(videoFeedURL);
     return '<div id="ctrlPanel1'+droneDTO.id+'" droneId="'+droneDTO.id+'" class="dronesList-header">Drone: '+droneDTO.id +
 
         ' -> <label>Altitude (m): </label> <input type="text" id="infoAlt'+droneDTO.id+'" size="2" value="'+droneDTO.alt+'" disabled />' +
@@ -22,7 +26,7 @@ const renderDroneUIComponent = function (droneDTO) {
 
         '<div class="dronesList-content" style="position:relative;">' +
 
-        '<img id="video'+droneDTO.id+'"  src="video.jpg"  style="width: 100%;" ' +
+        '<img id="video'+droneDTO.id+'"  src="video.jpg"  style="width: 100%; border-radius: 15px;" ' +
              'onclick="DRONES_MAP.get(\''+droneDTO.id+'\').startVideoFeed(); activateViewFPV(\''+droneDTO.id+'\');"> <br/>' +
 
         '<div id="ctrlPanel2'+droneDTO.id+'" style="position: absolute; top: 56%; float: left;">' +
@@ -58,15 +62,13 @@ const renderDroneUIComponent = function (droneDTO) {
         '<td> <input class="button" id="btnRRIGHT90'+droneDTO.id+'" type="button" value="RIGHT90" /> </td></tr>' +
         '</table>  </div>' +
 
-        '<div id="ctrlPanel5'+droneDTO.id+'" style="position:relative;top:-50px;">' +
-        '<input class="button" id="fArm'+droneDTO.id+'" type="button" value="TAKEOFF" style="width:16%;float:left;" />' +
-        '<input class="button" id="fDisarm'+droneDTO.id +'" type="button" value="LAND"  style="width:16%;float:left;margin-left:15px;"/>' +
-        '<input class="button" id="mRTL'+droneDTO.id+'" type="button" value="RETURN HOME"  style="width:16%;float:left;margin-left:15px;" />' +
-        '<input class="button" id="fActivate'+droneDTO.id+'" type="button" style="width:16%;margin-left:65px;float:left;" value="DROP PACKAGE"/>' +
-        '<input class="button" onclick="copyToClipboard(\'copyLink'+droneDTO.id+'\')" type="button" style="width:16%;float:right;" value="SHARE Video Feed"/>' +
-        '<input type="text" size="55" style="position:absolute;top:45px;" id="copyLink'+droneDTO.id+'" value="http://'+PUBLIC_IP+'/v/'+droneDTO.id+'" />' +
+        '<div id="ctrlPanel5' + droneDTO.id + '" style="position:relative;top:-50px; width: 60%; margin: auto; display: flex; justify-content: space-around; gap: 10px;">' +
+        '<input class="button" id="fArm'+droneDTO.id+'" type="button" value="TAKEOFF" />' +
+        '<input class="button" id="fDisarm'+droneDTO.id +'" type="button" value="LAND" />' +
+        '<input class="button" id="mRTL'+droneDTO.id+'" type="button" value="RETURN HOME" />' +
+        '<input class="button" id="fActivate'+droneDTO.id+'" type="button" value="START DETECTION"/>' +
+        '<input class="button" onclick="window.open('+videoFeedURL+')" type="button" value="SHARE VIDEO"/>' +
         '</div>' +
-
         '<div id="ctrlPanel6'+droneDTO.id+'" style="position:absolute;top:30px;left:30px;">' +
         '<input class="button" onclick="activateViewMAP(\''+droneDTO.id+'\')" type="button" value="VIEW ON MAP" style="width:148px;background-color:green;opacity:0.55;"/>' +
         '</div>' +
@@ -81,15 +83,21 @@ const renderDroneUIComponent = function (droneDTO) {
 
 
 const activateViewFPV = function (id) {
-	$('#map').hide();
+	$('#map').hide();  
+    $('#drone-head').css({ "display": "inline"});
+    $('.dronesList').css({ "width": "90%"});
 
-	$('.dronesList').css({ "width": "100%" });
-	$('#ctrlPanel2'+id).css({ "position": "absolute", "top": "56%", "float": "left", "margin-top": "", "left": "",      "width": "" });
-	$('#ctrlPanel3'+id).css({ "position": "absolute", "top": "35%", "float": "",     "margin-top": "", "left": "50px",  "width": "" });
-	$('#ctrlPanel4'+id).css({ "position": "absolute", "top": "56%", "right": "30px", "margin-top": "", "float": "", "left": "", "width": "" });
+    $('#ctrlPanel2').attr("style", "");
+    $('#ctrlPanel3').attr("style", "");
+    $('#ctrlPanel4').attr("style", "");
+    $('#ctrlPanel8').attr("style", "");
+
+	$('#ctrlPanel2'+id).css({ "position": "absolute", "top": "52%", "float": "left", "margin-top": "", "left": "",      "width": "" });
+	$('#ctrlPanel3'+id).css({ "position": "absolute", "top": "32%", "float": "",     "margin-top": "", "left": "50px",  "width": "" });
+	$('#ctrlPanel4'+id).css({ "position": "absolute", "top": "52%", "right": "30px", "margin-top": "", "float": "", "left": "", "width": "" });
+    $('#ctrlPanel8'+id).css({ "position": "absolute", "top": "32%", "right": "50px"});
 
     $('div[id^="ctrlPanel1"]').show();
-    
 	$('#ctrlPanel6'+id).show();
 	$('#ctrlPanel5'+id).show();
 	$('#ctrlPanel7'+id).show();
@@ -99,17 +107,21 @@ const activateViewFPV = function (id) {
 
 const activateViewMAP = function (id) { 
 	$('#map').show();
-	$('#map').css({ "width": "65%", "height": "950px", "position": "relative", "float": "left", "top": "0px", "left": "0px", "opacity": "1" });
-
+	$('#map').css({ "width": "55%", "height": "750px", "position": "relative", "float": "left", "top": "0px", "left": "0px", "opacity": "1" });
+    $('.dronesList').css({"margin" : "auto", "width": "40%"})
+    $('#drone-head').css({"display": "none"});
     $('div[id^="ctrlPanel1"]').hide();
 	$('#ctrlPanel5'+id).hide();
 	$('#ctrlPanel6'+id).hide();
 	$('#ctrlPanel7'+id).hide();
+    $('#ctrlPanel2').attr("style", "");
+    $('#ctrlPanel3').attr("style", "");
+    $('#ctrlPanel4').attr("style", "");
+    $('#ctrlPanel8').attr("style", "");
 
-
-	$('#ctrlPanel2'+id).css({ "position": "relative", "float": "left", "margin-top": "25px", "left": "-25px", "width": "100%", "right": "", "top": "" });
-	$('#ctrlPanel3'+id).css({ "position": "relative", "float": "left", "margin-top": "25px", "left": "-25px", "width": "100%", "right": "", "top": "" });
-	$('#ctrlPanel4'+id).css({ "position": "relative", "float": "left", "margin-top": "25px", "left": "-25px", "width": "100%", "right": "", "top": "" });
-
-	$('.dronesList').css({ "width": "35%" });
+    $('droneList-content').css({"display": "flex", "flex-direction": "columnn", "align-items": "center"})
+	$('#ctrlPanel2'+id).css({"position": "relative", "margin":"15px", "box-sizing": "border-box"});
+    $('#ctrlPanel3'+id).css({"position": "relative", "margin":"15px", "box-sizing": "border-box"});
+    $('#ctrlPanel8'+id).css({"float": "right", "position": "relative", "margin":"15px", "box-sizing": "border-box"});
+	$('#ctrlPanel4'+id).css({"position": "relative", "margin":"15px", "box-sizing": "border-box"});
 }

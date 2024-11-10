@@ -1,7 +1,42 @@
+#container{
+  background-color: #ddd;
+  padding: 10px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+#drone-head {
+  margin: auto;
+  width: 90%;
+  display: block;
+  margin-top: 20px;
+  background-color: #333;
+}
+
+#drone-head a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
 .center {
     text-align: center;
-  }
+}
   
   /* NAVIGATION */
    
@@ -62,16 +97,18 @@
   }
   
   #map {
-      height: 550px;
-      width: 100%;
-      float: left;
+      margin: auto;
+      height: 600px;
+      width: 90%;
       z-index: 100;
+      border: 1px solid #2a313a;
+      border-radius: 2px;
   }
   
   .button {
     display: inline-block;
     padding: 10px 13px;
-    font-size: 18px;
+    font-size: 14px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -94,14 +131,17 @@
   
   .dronesList {
       background: linear-gradient(to bottom right, white, #F8F8F8);
-      width: 100%;
-      background: white;
-      margin: 0 auto;
+      width: 90%;
+      background: #ddd;
+      margin: 10px auto;
+      margin-top: 0px;
       float: left;
+      border: 1px solid #2a313a;
+      border-radius: 2px;
   }
   
   .dronesList-header {
-      border-bottom: 1px solid #DDE0E7;
+      border-bottom: 1px solid #2a313a;
       color: #2a313a;
       cursor: pointer;
       font-weight: 700;
@@ -115,8 +155,8 @@
   
   .dronesList-content {
       display: none;
-      border-bottom: 1px solid #DDE0E7;
-      background: #F6F7F9;
+      margin: auto;
+      background: #828387;
       padding: 1.5rem;
       color: #4a5666;
   }
@@ -169,4 +209,11 @@
   
   .gmnoprint div {
       background: none !important;
+  }
+  label {
+    margin-left: 20px;
+  }
+
+ .dronesList-header input{
+    text-align: center;
   }
