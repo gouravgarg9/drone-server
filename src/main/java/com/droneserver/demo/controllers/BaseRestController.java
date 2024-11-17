@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.droneserver.demo.dto.DataPoint;
 import com.droneserver.demo.dto.DroneInfo;
+import com.droneserver.demo.service.ControlManager;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,17 +21,13 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class BaseRestController {
 
+	private final ControlManager controlManager;
+
 	@GetMapping("/updateSystemInfo")
 	public String updateSystemInfo() {
 
 		final Gson gson = new Gson();
-		final List<DroneInfo> drones = new ArrayList<>();
-
-		DroneInfo dto1 = new DroneInfo("1", -25, 19, 5, 10, 50, "nkull");
-		DroneInfo dto2 = new DroneInfo("2", -35, 149, 5, 10, 50, "bull");
-		drones.add(dto1);
-		drones.add(dto2);
-		
+		final List<DroneInfo> drones = controlManager.getDroneStatusAll();
 		return gson.toJson(drones);
 	}
 
@@ -41,6 +38,15 @@ public class BaseRestController {
 			return "fail";
 		}
 
+        final Gson gson = new Gson();
+		final List<DataPoint> deserializedPoints = new ArrayList<>();
+
+		for (Object obj : gson.fromJson(points, List.class)) {
+			deserializedPoints.add( gson.fromJson(obj.toString(), DataPoint.class));
+		}
+
+		controlManager.sendMissionDataToDrone(droneId, deserializedPoints);
+
         return "ok";
     }
 
@@ -50,6 +56,8 @@ public class BaseRestController {
 		if(commandCode == null || commandCode.trim().length() < 1) {
 			return "null";
 		}
+
+		controlManager.sendMessageFromUserIdToDrone(droneId, Integer.parseInt(commandCode));
 
         return "ok";
     }
