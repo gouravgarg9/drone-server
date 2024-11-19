@@ -27,7 +27,10 @@ public class BaseRestController {
 	public String updateSystemInfo() {
 
 		final Gson gson = new Gson();
-		final List<DroneInfo> drones = controlManager.getDroneStatusAll();
+		// final List<DroneInfo> drones = controlManager.getDroneStatusAll();
+		final List<DroneInfo> drones = new ArrayList<>();
+		drones.add(new DroneInfo("1", 20, 30, 10, 10, 10, "null"));
+
 		return gson.toJson(drones);
 	}
 
