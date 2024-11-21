@@ -28,6 +28,7 @@ public class ControlManager implements Runnable {
 	
 	public ControlManager(ConfigReader configurations) {
 		try {
+			log.error(".................control Manager initiated");
 			serverSocket = new ServerSocket( configurations.getControlServerPort());
 		} catch (IOException e) {
 			log.error(e.getMessage());
