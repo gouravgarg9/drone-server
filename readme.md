@@ -66,7 +66,7 @@ A **web-based control center** application for managing and monitoring **Unmanne
 2. Build the repository:
   ```bash
   ./gradlew clean build
-```
+  ```
 
 3. Run the Jar file:
   ```bash
