@@ -48,14 +48,6 @@ A **web-based control center** application for managing and monitoring **Unmanne
 
 ---
 
-## Folder Structure
-
-- **Backend Code**: Located under `src/main/java`.
-- **Frontend Assets**: Stored in `src/main/resources/static`.
-- **Configuration Files**: Includes `application.properties`, `application.yaml`.
-
----
-
 ### Steps to Run Locally:
 1. Clone the repository:
 ```bash
