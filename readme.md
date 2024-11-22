@@ -60,7 +60,7 @@ A **web-based control center** application for managing and monitoring **Unmanne
 1. Clone the repository:
 ```bash
 git clone https://github.com/gouravgarg9/drone-server.git
-cd your-repo-name
+cd drone-server
 ```
 
 2. Build the repository:
