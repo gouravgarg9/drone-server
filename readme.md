@@ -58,17 +58,17 @@ A **web-based control center** application for managing and monitoring **Unmanne
 
 ### Steps to Run Locally:
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/gouravgarg9/drone-server.git
-   cd your-repo-name
-   ```
+```bash
+git clone https://github.com/gouravgarg9/drone-server.git
+cd your-repo-name
+```
 
 2. Build the repository:
-  ```bash
-  ./gradlew clean build
-  ```
+```bash
+./gradlew clean build
+```
 
 3. Run the Jar file:
-  ```bash
-  java -jar .\build\libs\demo-0.0.1-SNAPSHOT.jar
-  ```
+```bash
+java -jar .\build\libs\demo-0.0.1-SNAPSHOT.jar
+```
