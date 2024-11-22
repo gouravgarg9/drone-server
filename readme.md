@@ -56,16 +56,6 @@ A **web-based control center** application for managing and monitoring **Unmanne
 
 ---
 
-## Application in Action
-### Control Center Dashboard:
-- Displays UAV locations in real-time on an interactive world map.
-- Provides drone details such as altitude, speed, and battery status.
-
-### Video Feed:
-- Live feed streaming from drones using Web-Sockets and UDP.
-
----
-
 ### Steps to Run Locally:
 1. Clone the repository:
    ```bash
