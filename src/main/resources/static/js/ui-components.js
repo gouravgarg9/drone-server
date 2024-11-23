@@ -47,8 +47,8 @@ const renderDroneUIComponent = function (droneDTO) {
         '</table></div>' +
 
         '<div id="ctrlPanel8'+droneDTO.id+'" style="position: absolute; top: 35%;right:50px;">' +
-        '<table><tr> <td> <input class="button" id="cameraUP'+droneDTO.id+'" type="button" value=" UP " /> </td></tr> ' +
-        '<tr> <td> <input class="button" id="cameraDOWN'+droneDTO.id+'" type="button" value="DOWN" /> </td></tr>' +
+        '<table><tr> <td> <input class="button" id="fArm'+droneDTO.id+'" type="button" value=" ARM " /> </td></tr> ' +
+        '<tr> <td> <input class="button" id="fDisarm'+droneDTO.id+'" type="button" value="DISARM" /> </td></tr>' +
         '</table>  </div>' +
 
         '<div id="ctrlPanel4'+droneDTO.id+'" style="position: absolute; top: 56%;right:30px;">' +
