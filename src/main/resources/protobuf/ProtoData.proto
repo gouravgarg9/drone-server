@@ -14,6 +14,9 @@ message DroneData {
 	string state = 6;
 	int32 video_port = 7;
 	string drone_id = 8;
+	int32 mq135 = 9;
+    int32 mq2 = 10;
+    float distance = 11;
 }
 
 message DataPoint {
