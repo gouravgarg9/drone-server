@@ -29,7 +29,7 @@ public class BaseRestController {
 		final Gson gson = new Gson();
 		final List<DroneInfo> drones = controlManager.getDroneStatusAll();
 		// final List<DroneInfo> drones = new ArrayList<>();
-		drones.add(new DroneInfo("3", 20, 30, 10, 10, 10, "null"));
+		drones.add(new DroneInfo("3", 20, 30, 10, 10, 10, "null", 141, 11, 101));
 
 		return gson.toJson(drones);
 	}

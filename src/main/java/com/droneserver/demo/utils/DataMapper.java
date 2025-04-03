@@ -21,7 +21,7 @@ public class DataMapper {
 		final float speedInKmH = droneData.getSpeed() * 3.6f;
 
 		return new DroneInfo(droneData.getDroneId(), droneData.getLatitude(), droneData.getLongitude(), speedInKmH,
-				                droneData.getAltitude(), droneData.getVoltage(), droneData.getState());
+				                droneData.getAltitude(), droneData.getVoltage(), droneData.getState(), droneData.getMq135(), droneData.getMq2(), droneData.getDistance());
     }
 
     public static byte[] toNetworkMessage(List<DataPoint> dataPoints) {

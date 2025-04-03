@@ -54,7 +54,9 @@ class Drone {
         this.locationToPointDataMap = new Map();
         this.labelCounter = 0;
         this.speed = 0.0;
-        this.alt = 0.0
+        this.alt = 0.0;
+        this.mq135 = 0;
+        this.mq2 = 0;
     }
 
     startMission() {

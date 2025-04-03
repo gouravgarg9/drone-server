@@ -13,4 +13,8 @@ public class DroneInfo {
 	private final double alt;
 	private final double battery;
 	private final String state;
+	private final int mq135;
+	private final int mq2;
+	private final float distance;
+
 }

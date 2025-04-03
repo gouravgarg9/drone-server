@@ -48,7 +48,7 @@ const updateSystemData = function () {
 
 const loadDronesData = function (data) {
 	var dronesDTOs = JSON.parse(data);
-
+	console.log(dronesDTOs);
 	$("p[id*='onlineStatus']").html('OFFLINE');
 
 	dronesDTOs.forEach(function (droneDTO) {
@@ -67,12 +67,16 @@ const loadDronesData = function (data) {
 			$('#infoAlt' + droneDTO.id).val(droneDTO.alt);
 			$('#infoSpeed' + droneDTO.id).val(droneDTO.speed);
 			$('#infoBat' + droneDTO.id).val(droneDTO.battery);
+			$('#infoMq135' + droneDTO.id).val(droneDTO.mq135);
+			$('#infoMq2' + droneDTO.id).val(droneDTO.mq2);
 		}
 
 		else {
 			var drone = new Drone(droneDTO.id, droneDTO.lattitude, droneDTO.longitude);
 			drone.speed = droneDTO.speed;
 			drone.altitude = droneDTO.alt;
+			drone.mq135 = droneDTO.mq135;
+			drone.mq2 = droneDTO.mq2;
 
 			DRONES_MAP.set(droneDTO.id, drone);
 
