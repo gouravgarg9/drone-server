@@ -48,7 +48,6 @@ const updateSystemData = function () {
 
 const loadDronesData = function (data) {
 	var dronesDTOs = JSON.parse(data);
-	console.log(dronesDTOs);
 	$("p[id*='onlineStatus']").html('OFFLINE');
 
 	dronesDTOs.forEach(function (droneDTO) {

@@ -21,6 +21,8 @@ const renderDroneUIComponent = function (droneDTO) {
         ' -> <label>Altitude (m): </label> <input type="text" id="infoAlt'+droneDTO.id+'" size="2" value="'+droneDTO.alt+'" disabled />' +
         '<label> Speed (km/h): </label> <input type="text" id="infoSpeed'+droneDTO.id+'" size="2" value="'+droneDTO.speed+'" disabled />' +
         '<label> Voltage: </label> <input type="text" id="infoBat'+droneDTO.id+'" size="2" value="'+droneDTO.battery+'" disabled />' +
+        '<label> MQ-135: </label> <input type="text" id="infoMq135'+droneDTO.id+'" size="2" value="'+droneDTO.mq135+'" disabled />' +
+        '<label> MQ-2: </label> <input type="text" id="infoMq2'+droneDTO.id+'" size="2" value="'+droneDTO.mq2+'" disabled />' +
 
         '<p id="onlineStatus'+droneDTO.id+'" class="drone-status">ONLINE</p>' +
         '<p id="armedStatus'+droneDTO.id+'" class="drone-arm-status">'+droneDTO.state+'</p>  </div>' +
