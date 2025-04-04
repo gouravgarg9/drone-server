@@ -1,5 +1,6 @@
 <html xmlns:th="http://thymeleaf.org">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
         <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -26,13 +27,12 @@
 
         <script type="text/javascript" src="/js/ui-components.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/app.css" />
-        
+        <link rel="stylesheet" type="text/css" href="/css/app-mobile.css" />
         <title>Drone Control</title>
     </head>
 <body>  
     <div class="topnav">
         <a href="/">Drone Control Center</a>
-        <a id="view-all" href="javascript:getAllVideoFeed()">View All</a>
     </div>
     <div id="container" style="display: flex; flex-wrap: wrap;">
         <div id="map"></div>
@@ -41,7 +41,6 @@
         </div>
         <div class="dronesList"></div>
     </div>
-    <div id="all-video-container" style="display: none" ></div>
 
 </body>
 </html>

@@ -223,3 +223,116 @@
  .dronesList-header input{
     text-align: center;
   }
+
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fc;
+}
+
+/* Modernized Buttons */
+.button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.1s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+/* Drone Control Panel */
+.dronesList-header {
+    background: linear-gradient(135deg, #ffffff, #e9eef7);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    transition: all 0.1s ease;
+}
+
+.dronesList-header span{
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+
+}
+.dronesList-header:hover {
+    background: #e0e7f3;
+}
+
+.dronesList-content {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    transition: all 0.1s ease;
+}
+
+/* Input Fields */
+input[type='text'] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 14px;
+    text-align: center;
+    transition: all 0.1s ease;
+}
+
+input[type='text']:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Control Panels */
+#ctrlPanel2, #ctrlPanel3, #ctrlPanel4, #ctrlPanel8 {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Status Indicators */
+.drone-status {
+    font-weight: bold;
+    color: green;
+    background: #e5f8e5;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.drone-arm-status {
+    font-weight: bold;
+    background: #ffefef;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+/* Map & Video Feed */
+#map {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.02);
+}

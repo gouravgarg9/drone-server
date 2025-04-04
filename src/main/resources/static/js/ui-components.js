@@ -16,21 +16,20 @@ const renderOneVideoStream = function (droneId) {
 
 const renderDroneUIComponent = function (droneDTO) {
     const videoFeedURL = `'http://${PUBLIC_IP}:${PORT}/video/${droneDTO.id}'`;
-    return '<div id="ctrlPanel1'+droneDTO.id+'" droneId="'+droneDTO.id+'" class="dronesList-header">Drone: '+droneDTO.id +
+    return '<div id="ctrlPanel1'+droneDTO.id+'" droneId="'+droneDTO.id+'" class="dronesList-header" onclick="forceLandscape('+droneDTO.id+');">Drone: '+droneDTO.id +
 
-        ' -> <label>Altitude (m): </label> <input type="text" id="infoAlt'+droneDTO.id+'" size="2" value="'+droneDTO.alt+'" disabled />' +
-        '<label> Speed (km/h): </label> <input type="text" id="infoSpeed'+droneDTO.id+'" size="2" value="'+droneDTO.speed+'" disabled />' +
-        '<label> Voltage: </label> <input type="text" id="infoBat'+droneDTO.id+'" size="2" value="'+droneDTO.battery+'" disabled />' +
-        '<label> MQ-135: </label> <input type="text" id="infoMq135'+droneDTO.id+'" size="2" value="'+droneDTO.mq135+'" disabled />' +
-        '<label> MQ-2: </label> <input type="text" id="infoMq2'+droneDTO.id+'" size="2" value="'+droneDTO.mq2+'" disabled />' +
+        '<span><label>Altitude (m): </label> <input type="text" id="infoAlt'+droneDTO.id+'" size="2" value="'+droneDTO.alt+'" disabled /></span>' +
+        '<span><label> Speed (km/h): </label> <input type="text" id="infoSpeed'+droneDTO.id+'" size="2" value="'+droneDTO.speed+'" disabled /></span>' +
+        '<span><label> Voltage: </label> <input type="text" id="infoBat'+droneDTO.id+'" size="2" value="'+droneDTO.battery+'" disabled /></span>' +
+        '<span><label> MQ-135: </label> <input type="text" id="infoMq135'+droneDTO.id+'" size="2" value="'+droneDTO.mq135+'" disabled /></span>' +
+        '<span><label> MQ-2: </label> <input type="text" id="infoMq2'+droneDTO.id+'" size="2" value="'+droneDTO.mq2+'" disabled /></span>' +
 
-        '<p id="onlineStatus'+droneDTO.id+'" class="drone-status">ONLINE</p>' +
-        '<p id="armedStatus'+droneDTO.id+'" class="drone-arm-status">'+droneDTO.state+'</p>  </div>' +
+        '<span><p id="onlineStatus'+droneDTO.id+'" class="drone-status">ONLINE</p>' +
+        '<p id="armedStatus'+droneDTO.id+'" class="drone-arm-status">'+droneDTO.state+'</p></span>  </div>' +
 
         '<div class="dronesList-content" style="position:relative;">' +
-
         '<img class="'+droneDTO.id+'"  src="video.jpg"  style="width: 100%; border-radius: 15px;" ' +
-             'onclick="DRONES_MAP.get(\''+droneDTO.id+'\').startVideoFeed(); activateViewFPV(\''+droneDTO.id+'\');"> <br/>' +
+             'onclick="DRONES_MAP.get(\''+droneDTO.id+'\').startVideoFeed(); activateViewFPV(\''+droneDTO.id+'\'); "> <br/>' +
 
         '<div id="ctrlPanel2'+droneDTO.id+'" style="position: absolute; top: 56%; float: left;">' +
         '<table><tr><td> </td>' +
@@ -129,8 +128,26 @@ const activateViewMAP = function (id) {
 	$('#ctrlPanel4'+id).css({"position": "relative", "margin":"15px", "box-sizing": "border-box"});
 }
 
-const showAllVideosPanel = function () {
-    $('#container').hide();
-    $('#all-video-container').show();
-    $('#all-video-container').css({"display": "flex", "flex-direction": "row", "flex-flow": "row wrap", "align-items": "center", "justify-content": "space-between", "padding": "20px"})
+async function forceLandscape(id) {
+    if (window.innerWidth<768 && screen.orientation && screen.orientation.lock) {
+      try {
+        await document.documentElement.requestFullscreen();
+        await screen.orientation.lock('landscape');
+        document.addEventListener("fullscreenchange", () => handleFullscreenExit(id));
+      } catch (err) {
+        console.warn('Orientation lock failed:', err);
+      }
+    }
+  }
+
+  function handleFullscreenExit(droneId) {
+    if (!document.fullscreenElement) {
+        console.log("Fullscreen exited, hiding control panel for drone:", droneId);
+
+        // Find the corresponding .dronesList-content and set display to none
+        let droneContent = document.querySelector(`#ctrlPanel1${droneId}`).nextElementSibling;
+        if (droneContent) {
+            droneContent.style.display = "none";
+        }
+    }
 }

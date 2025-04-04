@@ -110,22 +110,3 @@ const loadDronesData = function (data) {
 		}
 	});
 }
-
-const getAllVideoFeed = () => {
-	showAllVideosPanel();
-	DRONES_MAP.forEach((drone)=>{
-		$("#all-video-container").append(renderOneVideoStream(drone.id));
-		drone.startVideoFeed();	
-	})
-	DRONES_MAP.forEach((drone)=>{
-		$("#all-video-container").append(renderOneVideoStream(drone.id));
-		drone.startVideoFeed();	
-	})
-}
-
-const deactivateViewAll= () => {
-		$("#all-video-container").hide();
-		$("#all-video-container").html("");
-		$('#container').show();
-
-}

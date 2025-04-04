@@ -1,0 +1,137 @@
+/* Apply styles only for mobile devices */
+@media screen and (max-width: 768px) {
+    .dronesList-header {
+        display: flex;
+        flex-direction: column;
+        background: #f8f9fa; /* Light background */
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .dronesList-header span {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-top: 1px solid#666;
+    }
+
+    label {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .dronesList-header input{
+        all: unset;
+        font-size: 14px;
+        color: #666;
+        background: transparent;
+        border-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .drone-status {
+        background: #28a745;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        text-align: center;
+        font-weight: bold;
+        width: fit-content;
+        margin: 5px auto;
+    }
+
+    .drone-arm-status {
+        background: #ffcccc;
+        color: #900;
+        padding: 6px 12px;
+        border-radius: 20px;
+        text-align: center;
+        font-weight: bold;
+        width: fit-content;
+        margin: 5px auto;
+    }
+}
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .dronesList-content {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100vw !important;
+      height: 100vh !important;
+      background-color: black;
+      z-index: 9999;
+      overflow: hidden;
+    }
+  
+    .dronesList-content img {
+      width: 100% !important;
+      height: auto;
+      border-radius: 0 !important;
+    }
+  
+    #ctrlPanel2[id^="ctrlPanel2"],
+    #ctrlPanel3[id^="ctrlPanel3"],
+    #ctrlPanel4[id^="ctrlPanel4"],
+    #ctrlPanel5[id^="ctrlPanel5"],
+    #ctrlPanel6[id^="ctrlPanel6"],
+    #ctrlPanel7[id^="ctrlPanel7"],
+    #ctrlPanel8[id^="ctrlPanel8"] {
+      position: absolute;
+      scale: 0.9;
+    }
+  
+    #ctrlPanel2[id^="ctrlPanel2"] {
+      top: 60%;
+      left: 10px;
+    }
+  
+    #ctrlPanel3[id^="ctrlPanel3"] {
+      top: 10%;
+      left: 10px;
+    }
+  
+    #ctrlPanel8[id^="ctrlPanel8"] {
+      top: 10%;
+      right: 10px;
+    }
+  
+    #ctrlPanel4[id^="ctrlPanel4"] {
+      top: 60%;
+      right: 10px;
+    }
+  
+    #ctrlPanel5[id^="ctrlPanel5"] {
+      top: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      flex-wrap: wrap;
+      gap: 5px;
+      width: 90%;
+    }
+  
+    #ctrlPanel6[id^="ctrlPanel6"],
+    #ctrlPanel7[id^="ctrlPanel7"] {
+      top: 5%;
+    }
+  
+    #ctrlPanel6[id^="ctrlPanel6"] {
+      left: 10px;
+    }
+  
+    #ctrlPanel7[id^="ctrlPanel7"] {
+      right: 10px;
+    }
+  
+    input.button {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+  
