@@ -275,10 +275,8 @@
 }
 
 .dronesList-content {
-    background: #fff;
+    background: transparent;
     padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-top: 10px;
     transition: all 0.1s ease;
 }
@@ -294,7 +292,7 @@ input[type='text'] {
 }
 
 input[type='text']:focus {
-    border-color: #007bff;
+    border-color: #4776a8;
     outline: none;
 }
 
@@ -335,4 +333,15 @@ img {
 
 img:hover {
     transform: scale(1.02);
+}
+
+[id^="ctrlPanel5"] {
+  position: relative;
+  margin-top: 5px;
+  bottom:-5px; 
+  width: 60%; 
+  margin: auto; 
+  display: flex; 
+  justify-content: space-around; 
+  gap: 10px;
 }

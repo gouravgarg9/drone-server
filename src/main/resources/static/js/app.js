@@ -98,7 +98,6 @@ const loadDronesData = function (data) {
 				SELECTED_DRONE = DRONES_MAP.get( $(this).attr('droneId'));
 				SELECTED_DRONE.showPoints();
 				SELECTED_DRONE.startVideoFeed();
-				
 				WORLD_MAP.setZoom(18);
 								
 				activateViewFPV(droneDTO.id);

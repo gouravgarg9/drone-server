@@ -1,5 +1,5 @@
 /* Apply styles only for mobile devices */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
     .dronesList-header {
         display: flex;
         flex-direction: column;
@@ -58,80 +58,39 @@
     }
 }
 
-@media screen and (max-width: 768px) and (orientation: landscape) {
-    .dronesList-content {
-      position: fixed !important;
-      top: 0;
-      left: 0;
-      width: 100vw !important;
-      height: 100vh !important;
-      background-color: black;
-      z-index: 9999;
-      overflow: hidden;
+@media screen and (max-width: 850px) and (orientation:landscape) {
+    [id^="ctrlPanel"] input{
+        font-size: 11px;
     }
-  
-    .dronesList-content img {
-      width: 100% !important;
-      height: auto;
-      border-radius: 0 !important;
+
+    [id^="ctrlPanel5"] {
+        margin: auto;
+        position: relative;
+        width: 40%;
+        margin-top: 5px;
+        bottom: -5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
-  
-    #ctrlPanel2[id^="ctrlPanel2"],
-    #ctrlPanel3[id^="ctrlPanel3"],
-    #ctrlPanel4[id^="ctrlPanel4"],
-    #ctrlPanel5[id^="ctrlPanel5"],
-    #ctrlPanel6[id^="ctrlPanel6"],
-    #ctrlPanel7[id^="ctrlPanel7"],
-    #ctrlPanel8[id^="ctrlPanel8"] {
-      position: absolute;
-      scale: 0.9;
+
+    [id^="ctrlPanel2"] {
+        top: 20% !important;
     }
-  
-    #ctrlPanel2[id^="ctrlPanel2"] {
-      top: 60%;
-      left: 10px;
+    [id^="ctrlPanel3"] {
+        top: 70% !important;
     }
-  
-    #ctrlPanel3[id^="ctrlPanel3"] {
-      top: 10%;
-      left: 10px;
+    [id^="ctrlPanel4"] {
+        top: 20% !important;
     }
-  
-    #ctrlPanel8[id^="ctrlPanel8"] {
-      top: 10%;
-      right: 10px;
+    [id^="ctrlPanel8"] {
+        top: 70% !important;
     }
-  
-    #ctrlPanel4[id^="ctrlPanel4"] {
-      top: 60%;
-      right: 10px;
+}
+
+
+@media screen and (max-width: 850px) and (orientation:portrait) {
+    .dronesList-content{
+        display: none !important;
     }
-  
-    #ctrlPanel5[id^="ctrlPanel5"] {
-      top: 80%;
-      left: 50%;
-      transform: translateX(-50%);
-      flex-wrap: wrap;
-      gap: 5px;
-      width: 90%;
-    }
-  
-    #ctrlPanel6[id^="ctrlPanel6"],
-    #ctrlPanel7[id^="ctrlPanel7"] {
-      top: 5%;
-    }
-  
-    #ctrlPanel6[id^="ctrlPanel6"] {
-      left: 10px;
-    }
-  
-    #ctrlPanel7[id^="ctrlPanel7"] {
-      right: 10px;
-    }
-  
-    input.button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-  
+}
