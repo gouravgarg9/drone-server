@@ -21,7 +21,7 @@ public class DroneHandler {
 	private static final long MAX_WAIT_TIME = 10_000L;
 	private final String droneId;
 
-	private volatile long lastUpdateTime;
+	private volatile long lastUpdateTime = System.currentTimeMillis();
 	private DroneInfo lastStatus;
 	
 	private final Socket droneSocket;
@@ -50,19 +50,6 @@ public class DroneHandler {
     }
 
     public void activate() {
-		
-		handlerExecutor.execute( () -> {
-			while (!droneSocket.isClosed()) {
-				try {
-					this.lastStatus = DataMapper.fromNetworkToDroneInfo(streamIn);
-					this.lastUpdateTime = System.currentTimeMillis();
-				} catch (Exception e) {
-					log.info("Control Connection with {} Closed, reason: {}", droneSocket.getInetAddress().toString(), e.getMessage());
-					close();
-				}
-			}
-			close();
-		});
 
 		handlerExecutor.execute( () -> {
 			while (!droneSocket.isClosed()) {
@@ -77,6 +64,20 @@ public class DroneHandler {
 				}
 			}
 		});
+
+		handlerExecutor.execute( () -> {
+			while (!droneSocket.isClosed()) {
+				try {
+					this.lastStatus = DataMapper.fromNetworkToDroneInfo(streamIn);
+					this.lastUpdateTime = System.currentTimeMillis();
+				} catch (Exception e) {
+					log.info("Control Connection with {} Closed, reason: {}", droneSocket.getInetAddress().toString(), e.getMessage());
+					close();
+				}
+			}
+			close();
+		});
+
     }
 
     public void sendMissionData(List<DataPoint> dataPoints) {

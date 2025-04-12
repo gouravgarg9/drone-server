@@ -131,3 +131,13 @@ const activateViewMAP = function (id) {
         $('#ctrlPanel4'+id).css({"position": "relative", "float": "left", "margin":"20px", "box-sizing": "border-box"});
 }
 
+function gotoListDrone (){
+    $(".dronesList > .active").each(function (index) {
+        $(this).removeClass("active").next().slideToggle();
+
+        var drone = DRONES_MAP.get( $(this).attr('droneId'));
+        drone.stopVideoFeed();
+        drone.hidePoints();
+    });
+} 
+
