@@ -92,6 +92,7 @@ const activateViewFPV = function (id) {
             gotoListDrone();
           }, {once: true});
     }
+    $('.lineGraph').css({"display": "block"});
 
     $('#drone-head').css({ "display": "inline"});
     $('.dronesList').css({ "width": "90%"});

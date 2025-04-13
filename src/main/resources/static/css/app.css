@@ -286,7 +286,7 @@ input[type='text'] {
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 6px;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     transition: all 0.1s ease;
 }
@@ -344,4 +344,12 @@ img:hover {
   display: flex; 
   justify-content: space-around; 
   gap: 10px;
+}
+
+.lineGraph{
+  border: 1px solid #2a313a;
+  display: none;
+  align-items: center;
+  margin: 5px auto;
+  padding: 16px;
 }

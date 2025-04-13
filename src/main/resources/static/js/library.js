@@ -56,7 +56,28 @@ class Drone {
         this.speed = 0.0;
         this.alt = 0.0;
         this.mq135 = 0;
+        this.temperature = 0;  // Add sensor values
+        this.humidity = 0;
         this.mq2 = 0;
+        this.chartData = {
+            labels: [],
+            datasets: [
+                { label: 'Temperature', borderColor: 'red', data: [], fill: false },
+                { label: 'Humidity', borderColor: 'blue', data: [], fill: false },
+                { label: 'MQ-2', borderColor: 'green', data: [], fill: false },
+                { label: 'AQI (MQ-135)', borderColor: 'purple', data: [], fill: false }
+            ]
+        };
+    }
+
+    updateSensorData(temperature, humidity, mq2, mq135) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.mq2 = mq2;
+        this.mq135 = mq135;
+
+        // Call to update the chart data (preserving previous data)
+        updateDroneChartData(this);
     }
 
     startMission() {
@@ -378,4 +399,20 @@ const copyToClipboard = function (elmId) {
     copyLink.setSelectionRange(0, 99999);
 
     document.execCommand("copy");
+}
+
+function updateDroneChartData(drone) {
+    const MAX_POINTS = 30;  // Keep only the latest 30 data points
+    timestamp = new Date().toLocaleTimeString();
+    drone.chartData.labels.push(timestamp);
+    if (drone.chartData.labels.length > MAX_POINTS) {
+        drone.chartData.labels.shift();  // Remove the oldest timestamp if we exceed MAX_POINTS
+        drone.chartData.datasets.forEach(d => d.data.shift());  // Remove corresponding data from datasets
+    }
+
+    // Add new sensor data
+    drone.chartData.datasets[0].data.push(drone.temperature);  // Temperature
+    drone.chartData.datasets[1].data.push(drone.humidity);     // Humidity
+    drone.chartData.datasets[2].data.push(drone.mq2);          // MQ-2
+    drone.chartData.datasets[3].data.push(drone.mq135);        // AQI (MQ-135)
 }

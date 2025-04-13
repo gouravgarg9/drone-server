@@ -1,6 +1,23 @@
 var dronesCount = 0;
 const DRONES_MAP = new Map();
-
+const ctx = document.getElementById('sensorChart').getContext('2d');
+const sensorChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: []
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+}); 
 var SELECTED_DRONE;
 var WORLD_MAP;
 
@@ -62,7 +79,8 @@ const loadDronesData = function (data) {
 
 			var drone = DRONES_MAP.get(droneDTO.id);
 			drone.setPosition(droneDTO.lattitude, droneDTO.longitude, droneDTO.alt);
-
+			drone.updateSensorData(droneDTO.temperature, droneDTO.humidity, droneDTO.mq2, droneDTO.mq135);
+			sensorChart.update();
 			$('#infoAlt' + droneDTO.id).val(droneDTO.alt);
 			$('#infoSpeed' + droneDTO.id).val(droneDTO.speed);
 			$('#infoBat' + droneDTO.id).val(droneDTO.battery);
@@ -80,6 +98,7 @@ const loadDronesData = function (data) {
 			drone.mq2 = droneDTO.mq2;
 			drone.temperature = droneDTO.temperature;
 			drone.humidity = droneDTO.humidity;
+			drone.updateSensorData(droneDTO.temperature, droneDTO.humidity, droneDTO.mq2, droneDTO.mq135);
 			DRONES_MAP.set(droneDTO.id, drone);
 
 			$('.dronesList').append( renderDroneUIComponent(droneDTO));
@@ -104,6 +123,8 @@ const loadDronesData = function (data) {
 				WORLD_MAP.setZoom(18);
 								
 				activateViewFPV(droneDTO.id);
+				sensorChart.data = SELECTED_DRONE.chartData;
+    			sensorChart.update();
 
 				$(this).toggleClass("active").next().slideToggle();
 			});
