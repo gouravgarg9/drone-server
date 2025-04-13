@@ -18,6 +18,8 @@ const renderDroneUIComponent = function (droneDTO) {
         '<span><label> Voltage: </label> <input type="text" id="infoBat'+droneDTO.id+'" size="2" value="'+droneDTO.battery+'" disabled /></span>' +
         '<span><label> MQ-135: </label> <input type="text" id="infoMq135'+droneDTO.id+'" size="2" value="'+droneDTO.mq135+'" disabled /></span>' +
         '<span><label> MQ-2: </label> <input type="text" id="infoMq2'+droneDTO.id+'" size="2" value="'+droneDTO.mq2+'" disabled /></span>' +
+        '<span><label> Temperature: </label> <input type="text" id="infoTemperature'+droneDTO.id+'" size="2" value="'+droneDTO.Temperature+'" disabled /></span>' +
+        '<span><label> Humidity: </label> <input type="text" id="infoHumidity'+droneDTO.id+'" size="2" value="'+droneDTO.humidity+'" disabled /></span>' +
 
         '<span><p id="onlineStatus'+droneDTO.id+'" class="drone-status">ONLINE</p>' +
         '<p id="armedStatus'+droneDTO.id+'" class="drone-arm-status">'+droneDTO.state+'</p></span>  </div>' +

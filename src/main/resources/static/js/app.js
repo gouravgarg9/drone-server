@@ -68,6 +68,8 @@ const loadDronesData = function (data) {
 			$('#infoBat' + droneDTO.id).val(droneDTO.battery);
 			$('#infoMq135' + droneDTO.id).val(droneDTO.mq135);
 			$('#infoMq2' + droneDTO.id).val(droneDTO.mq2);
+			$('#infoTemperature' + droneDTO.id).val(droneDTO.temperature)
+			$('#infoHumidity' + droneDTO.id).val(droneDTO.humidity)
 		}
 
 		else {
@@ -76,7 +78,8 @@ const loadDronesData = function (data) {
 			drone.altitude = droneDTO.alt;
 			drone.mq135 = droneDTO.mq135;
 			drone.mq2 = droneDTO.mq2;
-
+			drone.temperature = droneDTO.temperature;
+			drone.humidity = droneDTO.humidity;
 			DRONES_MAP.set(droneDTO.id, drone);
 
 			$('.dronesList').append( renderDroneUIComponent(droneDTO));

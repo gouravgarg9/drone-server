@@ -16,5 +16,7 @@ public class DroneInfo {
 	private final int mq135;
 	private final int mq2;
 	private final float distance;
+	private final float temperature;
+	private final float humidity;
 
 }

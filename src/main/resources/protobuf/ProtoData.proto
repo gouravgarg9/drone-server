@@ -17,6 +17,8 @@ message DroneData {
 	int32 mq135 = 9;
     int32 mq2 = 10;
     float distance = 11;
+	float temperature = 12;
+	float humidity = 13;
 }
 
 message DataPoint {
