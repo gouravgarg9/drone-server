@@ -40,18 +40,22 @@ const renderDroneUIComponent = function (droneDTO) {
         '<td> </td></tr></table>  </div>' +
 
         '<div id="ctrlPanel3'+droneDTO.id+'" style="position: absolute; top: 30%;left:50px;">' +
-        '<table><tr> <td>' +
+        // '<table><tr> <td>' +
         '<input class="button" id="fArm'+droneDTO.id+'" type="button" value="TAKEOFF" />' +
-        '</td></tr> ' +
-        '<tr> <td>' +
-        '<input class="button" id="fDisarm'+droneDTO.id +'" type="button" value="LAND" />' +
-        '</td></tr>' +
-        '</table></div>' +
+        // '</td></tr> ' +
+        // '<tr> <td>' +
+        // '<input class="button" id="fDisarm'+droneDTO.id +'" type="button" value="LAND" />' +
+        // '</td></tr>' +
+        // '</table>' +
+        '</div>' +
 
         '<div id="ctrlPanel8'+droneDTO.id+'" style="position: absolute; top: 30%;right:50px;">' +
-        '<table><tr> <td> <input class="button" id="fArm'+droneDTO.id+'" type="button" value=" ARM " /> </td></tr> ' +
-        '<tr> <td> <input class="button" id="fDisarm'+droneDTO.id+'" type="button" value="DISARM" /> </td></tr>' +
-        '</table>  </div>' +
+        // '<table><tr> <td> <input class="button" id="fArm'+droneDTO.id+'" type="button" value=" ARM " /> </td></tr> ' +
+        // '<tr> <td>' + 
+        '<input class="button" id="fDisarm'+droneDTO.id+'" type="button" value="LAND" />'+ 
+        // '</td></tr>' +
+        // '</table>' + 
+        '</div>' +
 
         '<div id="ctrlPanel4'+droneDTO.id+'" style="position: absolute; top: 50%;right:30px;">' +
         '<table><tr> <td></td><td> <input class="button" id="btnU'+droneDTO.id+'" type="button" value="≙" /> </td><td></td></tr> ' +
@@ -67,8 +71,8 @@ const renderDroneUIComponent = function (droneDTO) {
         '<input class="button" id="mStart'+droneDTO.id+'" type="button" value="START/PAUSE Mission" />'+
         ' <input class="button" id="mCancel'+droneDTO.id+'" type="button" value="CLEAR Mission Data" /> ' +
         '<input class="button" id="mRTL'+droneDTO.id+'" type="button" value="RETURN HOME" />' +
-        '<input class="button" id="fActivate'+droneDTO.id+'" type="button" value="START DETECTION"/>' +
-        '<input class="button" onclick="window.open('+videoFeedURL+')" type="button" value="SHARE VIDEO"/>' +
+        // '<input class="button" id="fActivate'+droneDTO.id+'" type="button" value="START DETECTION"/>' +
+        // '<input class="button" onclick="window.open('+videoFeedURL+')" type="button" value="SHARE VIDEO"/>' +
         '</div>' +
         '<div id="ctrlPanel6'+droneDTO.id+'" style="position:absolute;top:30px;left:30px;">' +
         '<input class="button" onclick="activateViewMAP(\''+droneDTO.id+'\')" type="button" value="VIEW ON MAP" style="width:148px;background-color:green;opacity:0.55;"/>' +
