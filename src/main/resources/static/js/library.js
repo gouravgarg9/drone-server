@@ -62,10 +62,10 @@ class Drone {
         this.chartData = {
             labels: [],
             datasets: [
-                { label: 'Temperature', borderColor: 'red', data: [], fill: false },
-                { label: 'Humidity', borderColor: 'blue', data: [], fill: false },
-                { label: 'MQ-2', borderColor: 'green', data: [], fill: false },
-                { label: 'AQI (MQ-135)', borderColor: 'purple', data: [], fill: false }
+                { label: 'Temperature (℃)', borderColor: 'red', data: [], fill: false },
+                { label: 'Humidity (%)', borderColor: 'blue', data: [], fill: false },
+                { label: 'MQ-2 (ppm)', borderColor: 'green', data: [], fill: false },
+                { label: 'MQ-135 (ppm)', borderColor: 'purple', data: [], fill: false }
             ]
         };
     }
